@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+backend/venv/
+.pytest_cache/
+
+# Data & Large Binaries
+backend/data/raw/*.json
+backend/data/processed/*.parquet
+!backend/data/processed/incidents_clean.csv
+!backend/data/processed/incidents_clean.json
+
+# Local Environment
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# next.js
+/.next/
+/out/
+/build
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

@@ -1,0 +1,11 @@
+{
+  "runs": [
+    {
+      "source": "SEC EDGAR",
+      "retrieval_time": "2026-06-04T17:27:33.668618",
+      "filing_count": 100,
+      "success": true
+    }
+  ],
+  "last_successful_run": "2026-06-04T17:27:33.668618"
+}

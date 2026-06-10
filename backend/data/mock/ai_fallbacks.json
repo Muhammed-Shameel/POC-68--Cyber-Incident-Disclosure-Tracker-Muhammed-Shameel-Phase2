@@ -1,0 +1,7 @@
+{
+  "executive_summary": "EXECUTIVE INTELLIGENCE SUMMARY (Mock Data)\n\nAnalysis indicates a continued trend in cybersecurity disclosure activity. Key sectors including Healthcare and Financial Services show heightened activity levels. Recent disclosures highlight a focus on operational resilience and data protection measures in response to evolving threat landscapes.",
+  "sector_brief": "SECTOR INTELLIGENCE BRIEF (Mock Data)\n\nIndustry-specific analysis shows concentrated disclosure activity in critical infrastructure sectors. Financial services and healthcare continue to be lead indicators for regulatory reporting trends.",
+  "trend_brief": "ATTACK TREND BRIEF (Mock Data)\n\nObservations suggest a stabilization of disclosure frequencies with intermittent spikes corresponding to specific campaign activities. Attack vectors remain diversified across standard exploitation categories.",
+  "risk_brief": "RISK OBSERVATIONS (Mock Data)\n\nRisk concentration is currently highest in sectors with significant personally identifiable information (PII) holdings. Mitigation strategies disclosed emphasize technical controls and vendor risk management.",
+  "default": "AI analysis is currently operating in mock data mode. Detailed summaries are restricted to pre-defined templates until a cloud AI provider is configured."
+}

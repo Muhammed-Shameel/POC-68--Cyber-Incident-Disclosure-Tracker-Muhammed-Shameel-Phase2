@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pandas
+duckdb
+requests
+pyarrow
+python-dotenv
+pytest
+httpx
+openai
+anthropic

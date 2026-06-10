@@ -1,0 +1,15 @@
+{
+  "total_records": 100,
+  "duplicates_removed": 0,
+  "missing_fields": {
+    "company_name": 0,
+    "dates": 0,
+    "invalid_urls": 0,
+    "empty_descriptions": 0
+  },
+  "classification_coverage": {
+    "sector": "28.0%",
+    "attack_type": "0.0%"
+  },
+  "last_run": "2026-06-09T15:13:38.973297"
+}
