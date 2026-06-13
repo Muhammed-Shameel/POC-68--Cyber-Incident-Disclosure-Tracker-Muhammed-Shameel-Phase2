@@ -1,25 +1,55 @@
-# Python
+# ==========================================
+# Python / Backend
+# ==========================================
+
 __pycache__/
 *.py[cod]
 *$py.class
-backend/venv/
-.pytest_cache/
 
-# Data & Large Binaries
+backend/venv/
+backend/.venv/
+backend/__pycache__/
+backend/.pytest_cache/
+
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ==========================================
+# Backend Data
+# ==========================================
+
 backend/data/raw/*.json
 backend/data/processed/*.parquet
+
+# Keep important processed files
 !backend/data/processed/incidents_clean.csv
 !backend/data/processed/incidents_clean.json
 
-# Local Environment
+# ==========================================
+# Environment Variables
+# ==========================================
+
 .env
 .env.local
 .env.*.local
-backend/.env
 
-# Dependencies
-/node_modules
-/.pnp
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# ==========================================
+# Frontend / Next.js
+# ==========================================
+
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Package manager
+.pnp
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -27,18 +57,45 @@ backend/.env
 !.yarn/releases
 !.yarn/versions
 
-# next.js
-/.next/
-/out/
-/build
+# ==========================================
+# Logs
+# ==========================================
 
-# misc
-.DS_Store
-*.pem
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# typescript
+# ==========================================
+# TypeScript
+# ==========================================
+
 *.tsbuildinfo
-next-env.d.ts
+frontend/next-env.d.ts
+
+# ==========================================
+# OS / IDE
+# ==========================================
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+# ==========================================
+# Security
+# ==========================================
+
+*.pem
+*.key
+*.crt
+
+# ==========================================
+# Build / Cache
+# ==========================================
+
+.cache/
+dist/
+tmp/
+temp/
