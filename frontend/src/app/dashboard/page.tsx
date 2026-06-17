@@ -15,6 +15,9 @@ import {
   Building2, 
   Globe2, 
   TrendingUp,
+  Info,
+  X,
+  Menu,
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -23,6 +26,8 @@ export default function DashboardPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [currentFilters, setCurrentFilters] = useState({ company: '', sector: '', severity: '', attackType: '' });
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showCreatorInfo, setShowCreatorInfo] = useState(false);
 
   async function loadDashboardData(filters: typeof currentFilters) {
     setLoading(true);
@@ -96,15 +101,62 @@ export default function DashboardPage() {
   const mostCommonAttackType = (attackIntel?.attacks && Array.isArray(attackIntel.attacks) && attackIntel.attacks[0]?.attack_type) || 'N/A';
 
   return (
-    <div className="flex min-h-screen bg-background">
-      {/* Main Intelligence Area */}
-      <main className="flex-1 p-8 space-y-8 overflow-y-auto">
-        <div>
-          <h1 className="text-4xl font-extrabold text-white tracking-tighter">Cyber Incident Disclosure Tracker</h1>
-          <p className="text-zinc-400 mt-2 text-lg">Governance, Trust, and Real-time SEC Disclosure Monitoring</p>
+    <div className="relative h-screen flex flex-col overflow-hidden bg-background">
+      {/* Cinematic Header */}
+      <header className="absolute top-0 left-0 right-0 z-40 flex items-center justify-between px-8 h-20 bg-gradient-to-b from-black/50 to-transparent pointer-events-none">
+        <div className="pointer-events-auto flex flex-col justify-center h-full"> {/* Added flex flex-col justify-center h-full */}
+          <h1 className="text-2xl font-black text-white tracking-tighter uppercase italic leading-none">Cyber Incident Disclosure Tracker</h1> {/* Added leading-none */}
+          <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mt-1">Real-time Intelligence Platform</p>
         </div>
+        
+        <div className="flex items-center gap-4 pointer-events-auto">
+          <button 
+            onClick={() => setIsSidebarOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-primary-accent/10 border border-primary-accent/20 rounded-full text-xs font-bold text-primary-accent hover:bg-primary-accent/20 transition-all uppercase tracking-widest"
+          >
+            <Menu size={14} />
+            Intelligence
+          </button>
+          
+          <div className="relative">
+            <button 
+              onClick={() => setShowCreatorInfo(!showCreatorInfo)}
+              className="p-2 text-zinc-500 hover:text-white transition-colors"
+            >
+              <Info size={20} />
+            </button>
+            
+            {showCreatorInfo && (
+              <div className="absolute top-12 right-0 z-50 w-72 bg-surface border border-border rounded-xl shadow-2xl p-6 animate-in fade-in zoom-in duration-200">
+                <div className="flex justify-between items-center mb-4 pb-2 border-b border-border"> {/* Adjusted mb-6 to mb-4 */}
+                  <h3 className="text-xs font-black text-white uppercase tracking-widest">Inforcreon Internship: Architect Metadata</h3>
+                  <button onClick={() => setShowCreatorInfo(false)} className="text-zinc-500 hover:text-white">
+                    <X size={14} />
+                  </button>
+                </div>
+                <div className="space-y-3"> {/* Adjusted space-y-4 to space-y-3 */}
+                  <div>
+                    <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Architect</div>
+                    <div className="text-sm text-white font-medium">Muhammed Shameel</div>
+                  </div>
+                  <div>
+                    <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Batch</div>
+                    <div className="text-sm text-white font-medium">Batch 3</div>
+                  </div>
+                  <div>
+                    <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Stack</div>
+                    <div className="text-[11px] text-zinc-300 font-medium">Next.js, FastAPI, Tailwind CSS, ECharts</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </header>
 
-        {/* KPI Row */}
+      {/* Main Full-Screen Content */}
+      <main className="flex-1 w-full h-full overflow-y-auto pt-20 pb-12 px-8 space-y-12">
+        {/* KPI Row - Immersive Style */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
           <SummaryCard
             title="Total Incidents"
@@ -132,40 +184,67 @@ export default function DashboardPage() {
           />
         </div>
 
-        {/* Full-width Disclosure Timeline */}
-        <ChartCard title="Disclosure Timeline">
-          <TimelineChart data={timeline ?? []} />
-        </ChartCard>
-
-        {/* Full-width Attack Distribution */}
-        <AttackDistributionPanel data={attackIntel ?? { attacks: [] }} />
-
-        {/* Severity and Sector Exposure (Pie) Row */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <ChartCard title="Severity Distribution">
-            <SeverityChart data={severity ?? {}} />
+        {/* Cinematic Data Visualization */}
+        <div className="grid grid-cols-1 gap-12">
+          <ChartCard title="Disclosure Timeline Intelligence">
+            <TimelineChart data={timeline ?? []} />
           </ChartCard>
-          <ChartCard title="Sector Exposure Percentage">
-             <SectorPieChart data={sectorIntel?.all_sectors ?? []} />
-          </ChartCard>
+
+          <AttackDistributionPanel data={attackIntel ?? { attacks: [] }} />
+
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <ChartCard title="Severity Spectrum Analysis">
+              <SeverityChart data={severity ?? {}} />
+            </ChartCard>
+            <ChartCard title="Sector Exposure Distribution">
+               <SectorPieChart data={sectorIntel?.all_sectors ?? []} />
+            </ChartCard>
+          </div>
         </div>
 
-        {/* Incident Table */}
-        <IncidentTable data={incidents ?? []} />
+        {/* Global Incident Log */}
+        <section className="pt-8 border-t border-border">
+          <div className="mb-6">
+            <h2 className="text-xl font-black text-white uppercase tracking-tight leading-none">Global Incident Disclosure Database</h2>
+            <p className="text-xs text-zinc-500 mt-1 uppercase tracking-widest font-bold">Comprehensive disclosure tracking and metadata analysis</p>
+          </div>
+          <IncidentTable data={incidents ?? []} />
+        </section>
       </main>
 
-      {/* Dashboard Sidebar */}
-      <div className="w-[30%]">
-        <DashboardSidebar
-          highestRiskSector={highestRiskSector}
-          mostCommonAttackType={mostCommonAttackType}
-          insights={insights ?? []}
-          currentFilters={currentFilters}
-          onFilterChange={setCurrentFilters}
-          summary={summary}
-          incidents={incidents}
-        />
+      {/* Dynamic Slide-over Intelligence Panel */}
+      <div className={`fixed inset-y-0 right-0 z-50 w-full md:w-[450px] transform transition-transform duration-500 ease-in-out shadow-2xl ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="h-full bg-zinc-950/95 backdrop-blur-xl border-l border-zinc-800 flex flex-col">
+          <div className="flex items-center justify-between p-6 border-b border-zinc-800 bg-black/20">
+            <h2 className="text-lg font-black text-white uppercase tracking-tighter italic">Intelligence Brief</h2>
+            <button 
+              onClick={() => setIsSidebarOpen(false)}
+              className="p-2 text-zinc-500 hover:text-white transition-colors bg-zinc-900 rounded-full"
+            >
+              <X size={18} />
+            </button>
+          </div>
+          <div className="flex-1 overflow-y-auto">
+            <DashboardSidebar
+              highestRiskSector={highestRiskSector}
+              mostCommonAttackType={mostCommonAttackType}
+              insights={insights ?? []}
+              currentFilters={currentFilters}
+              onFilterChange={setCurrentFilters}
+              summary={summary}
+              incidents={incidents}
+            />
+          </div>
+        </div>
       </div>
+
+      {/* Panel Backdrop */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
     </div>
   );
 

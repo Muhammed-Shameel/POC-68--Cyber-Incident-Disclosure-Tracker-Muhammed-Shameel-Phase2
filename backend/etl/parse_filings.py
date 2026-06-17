@@ -10,7 +10,7 @@ def parse_sec_title(title):
         return match.group(1), match.group(2)
     return title, "unknown"
 
-def process_filings(filings):
+def process_filings_to_dataframe(filings):
     processed_records = []
     
     for f in filings:

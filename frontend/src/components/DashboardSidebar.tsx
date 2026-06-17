@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Filter } from 'lucide-react';
+import { Filter, X } from 'lucide-react';
 import {
   AnalyticsSummary,
   Incident as IncidentType,
@@ -74,7 +74,7 @@ export function DashboardSidebar({
 
   return (
     <aside className="w-full bg-zinc-950 border-l border-zinc-800 p-6 space-y-6">
-      <div className="text-xl font-bold text-white mb-6">Governance & Trust</div>
+      <div className="text-xl font-bold text-white mb-6 tracking-tighter uppercase italic">Strategic Intelligence</div>
 
       {/* Filters */}
       <section className="border border-zinc-800 p-5 rounded-lg space-y-3">

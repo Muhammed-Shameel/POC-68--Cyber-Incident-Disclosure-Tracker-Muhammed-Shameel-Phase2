@@ -21,26 +21,29 @@ export function IntelligenceSummary({
   mostCommonAttackType,
 }: IntelligenceSummaryProps) {
   const summaryItems = [
-    { label: 'Dataset Name', value: datasetName, icon: Globe },
+    { label: 'Dataset', value: datasetName, icon: Globe },
     { label: 'Total Records', value: totalRecords.toLocaleString(), icon: Shield },
-    { label: 'Total Companies', value: totalCompanies.toLocaleString(), icon: Building2 },
+    { label: 'Total Entities', value: totalCompanies.toLocaleString(), icon: Building2 },
     { label: 'Affected Sectors', value: affectedSectors.toLocaleString(), icon: Globe },
-    { label: 'Average Risk Score', value: averageRiskScore.toFixed(2), icon: TrendingUp },
-    { label: 'Highest Risk Sector', value: highestRiskSector || 'N/A', icon: Sigma },
-    { label: 'Most Common Attack Type', value: mostCommonAttackType || 'N/A', icon: Zap },
+    { label: 'Avg Risk Score', value: averageRiskScore.toFixed(2), icon: TrendingUp },
+    { label: 'High Risk Sector', value: highestRiskSector || 'N/A', icon: Sigma },
+    { label: 'Primary Attack', value: mostCommonAttackType || 'N/A', icon: Zap },
   ];
 
   return (
-    <div className="p-6 bg-surface border border-border rounded-xl col-span-full">
-      <h2 className="text-xl font-bold tracking-tight text-text-primary mb-6">Intelligence Summary</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="p-6 bg-zinc-900/40 border border-zinc-800 rounded-xl">
+      <div className="flex items-center gap-2 mb-6">
+        <Sigma className="w-4 h-4 text-primary-accent" />
+        <h2 className="text-xs font-black uppercase tracking-widest text-zinc-400">Intelligence Briefing</h2>
+      </div>
+      <div className="space-y-4">
         {summaryItems.map((item, index) => (
-          <div key={index} className="flex items-center space-x-3">
-            <item.icon className="h-5 w-5 text-primary-accent" />
-            <div>
-              <p className="text-sm text-text-secondary">{item.label}</p>
-              <p className="text-lg font-semibold text-text-primary">{item.value}</p>
+          <div key={index} className="flex items-center justify-between border-b border-zinc-800/50 pb-3 last:border-0 last:pb-0">
+            <div className="flex items-center gap-3">
+              <item.icon className="h-3.5 w-3.5 text-zinc-500" />
+              <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-500">{item.label}</span>
             </div>
+            <span className="text-sm font-semibold text-zinc-200">{item.value}</span>
           </div>
         ))}
       </div>

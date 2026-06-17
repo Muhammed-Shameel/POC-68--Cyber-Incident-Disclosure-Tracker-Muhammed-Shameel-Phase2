@@ -21,7 +21,7 @@ const AttackIntelligence: React.FC<AttackIntelligenceProps> = ({ data }) => {
 
       <div className="space-y-4">
         {attacks.map((attack, index) => {
-          const isPositive = attack.growth > 0;
+          const isPositive = (attack.growth ?? 0) > 0;
           return (
             <div key={index} className="p-4 bg-secondary-surface/30 rounded-lg border border-border/30">
               <div className="flex justify-between items-start mb-2">
