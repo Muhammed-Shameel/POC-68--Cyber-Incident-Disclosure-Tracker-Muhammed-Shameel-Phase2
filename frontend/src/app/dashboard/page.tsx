@@ -102,60 +102,61 @@ export default function DashboardPage() {
 
   return (
     <div className="relative h-screen flex flex-col overflow-hidden bg-background">
-      {/* Cinematic Header */}
-      <header className="absolute top-0 left-0 right-0 z-40 flex items-center justify-between px-8 h-20 bg-gradient-to-b from-black/50 to-transparent pointer-events-none">
-        <div className="pointer-events-auto flex flex-col justify-center h-full"> {/* Added flex flex-col justify-center h-full */}
-          <h1 className="text-2xl font-black text-white tracking-tighter uppercase italic leading-none">Cyber Incident Disclosure Tracker</h1> {/* Added leading-none */}
-          <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mt-1">Real-time Intelligence Platform</p>
-        </div>
-        
-        <div className="flex items-center gap-4 pointer-events-auto">
-          <button 
-            onClick={() => setIsSidebarOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary-accent/10 border border-primary-accent/20 rounded-full text-xs font-bold text-primary-accent hover:bg-primary-accent/20 transition-all uppercase tracking-widest"
-          >
-            <Menu size={14} />
-            Intelligence
-          </button>
+      {/* Main Full-Screen Content */}
+      <main className="flex-1 w-full h-full overflow-y-auto pb-12 px-8 space-y-12">
+        {/* Cinematic Header - Now inside main and scrolls with content */}
+        <header className="flex items-center justify-between px-8 h-20 bg-gradient-to-b from-black/50 to-transparent pointer-events-none">
+          <div className="pointer-events-auto flex flex-col justify-center h-full">
+            <h1 className="text-2xl font-black text-white tracking-tighter uppercase italic leading-none">Cyber Incident Disclosure Tracker</h1>
+            <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mt-1">Real-time Intelligence Platform</p>
+            <p className="text-[9px] text-zinc-600 uppercase tracking-widest font-bold">Inforcreon Internship</p> {/* New sub-sub-heading */}
+          </div>
           
-          <div className="relative">
+          <div className="flex items-center gap-4 pointer-events-auto">
             <button 
-              onClick={() => setShowCreatorInfo(!showCreatorInfo)}
-              className="p-2 text-zinc-500 hover:text-white transition-colors"
+              onClick={() => setIsSidebarOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-primary-accent/10 border border-primary-accent/20 rounded-full text-xs font-bold text-primary-accent hover:bg-primary-accent/20 transition-all uppercase tracking-widest"
             >
-              <Info size={20} />
+              <Menu size={14} />
+              Intelligence
             </button>
             
-            {showCreatorInfo && (
-              <div className="absolute top-12 right-0 z-50 w-72 bg-surface border border-border rounded-xl shadow-2xl p-6 animate-in fade-in zoom-in duration-200">
-                <div className="flex justify-between items-center mb-4 pb-2 border-b border-border"> {/* Adjusted mb-6 to mb-4 */}
-                  <h3 className="text-xs font-black text-white uppercase tracking-widest">Inforcreon Internship: Architect Metadata</h3>
-                  <button onClick={() => setShowCreatorInfo(false)} className="text-zinc-500 hover:text-white">
-                    <X size={14} />
-                  </button>
+            <div className="relative">
+              <button 
+                onClick={() => setShowCreatorInfo(!showCreatorInfo)}
+                className="p-2 text-zinc-500 hover:text-white transition-colors"
+              >
+                <Info size={20} />
+              </button>
+              
+              {showCreatorInfo && (
+                <div className="absolute top-12 right-0 z-50 w-72 bg-surface border border-border rounded-xl shadow-2xl p-6 animate-in fade-in zoom-in duration-200">
+                  <div className="flex justify-between items-center mb-4 pb-2 border-b border-border">
+                    <h3 className="text-xs font-black text-white uppercase tracking-widest">Architect Metadata</h3> {/* Reverted h3 */}
+                    <button onClick={() => setShowCreatorInfo(false)} className="text-zinc-500 hover:text-white">
+                      <X size={14} />
+                    </button>
+                  </div>
+                  <div className="space-y-3">
+                    <div>
+                      <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Architect</div>
+                      <div className="text-sm text-white font-medium">Muhammed Shameel</div>
+                    </div>
+                    <div>
+                      <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Batch</div>
+                      <div className="text-sm text-white font-medium">Batch 3</div>
+                    </div>
+                    <div>
+                      <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Stack</div>
+                      <div className="text-[11px] text-zinc-300 font-medium">Next.js, FastAPI, Tailwind CSS, ECharts</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-3"> {/* Adjusted space-y-4 to space-y-3 */}
-                  <div>
-                    <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Architect</div>
-                    <div className="text-sm text-white font-medium">Muhammed Shameel</div>
-                  </div>
-                  <div>
-                    <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Batch</div>
-                    <div className="text-sm text-white font-medium">Batch 3</div>
-                  </div>
-                  <div>
-                    <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest mb-1">Stack</div>
-                    <div className="text-[11px] text-zinc-300 font-medium">Next.js, FastAPI, Tailwind CSS, ECharts</div>
-                  </div>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* Main Full-Screen Content */}
-      <main className="flex-1 w-full h-full overflow-y-auto pt-20 pb-12 px-8 space-y-12">
         {/* KPI Row - Immersive Style */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
           <SummaryCard
