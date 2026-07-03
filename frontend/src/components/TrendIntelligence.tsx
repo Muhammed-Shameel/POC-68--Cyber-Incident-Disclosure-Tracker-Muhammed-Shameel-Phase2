@@ -9,8 +9,8 @@ interface TrendIntelligenceProps {
 }
 
 const TrendIntelligence: React.FC<TrendIntelligenceProps> = ({ trends }) => {
-  const renderTrend = (label: string, data: { current: number; previous: number; growth: number }) => {
-    const isPositive = data.growth > 0;
+  const renderTrend = (label: string, data: { current: number; previous: number; growth: number | null }) => {
+    const isPositive = (data.growth ?? 0) > 0;
     
     return (
       <div className="p-4 bg-slate-800/50 rounded-lg border border-slate-700/50">
@@ -22,7 +22,7 @@ const TrendIntelligence: React.FC<TrendIntelligenceProps> = ({ trends }) => {
           </div>
           <div className={`flex items-center gap-1 text-sm font-medium ${isPositive ? 'text-red-400' : 'text-emerald-400'}`}>
             {isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-            {Math.abs(data.growth)}%
+            {Math.abs(data.growth ?? 0)}%
           </div>
         </div>
       </div>

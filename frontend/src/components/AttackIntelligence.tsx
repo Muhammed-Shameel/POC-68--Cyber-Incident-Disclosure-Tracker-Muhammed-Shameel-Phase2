@@ -28,7 +28,7 @@ const AttackIntelligence: React.FC<AttackIntelligenceProps> = ({ data }) => {
                 <span className="text-text-primary font-medium">{attack.attack_type}</span>
                 <div className={`flex items-center gap-1 text-xs font-medium ${isPositive ? 'text-secondary-accent' : 'text-primary-accent'}`}>
                   {isPositive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-                  {Math.abs(attack.growth)}%
+                  {Math.abs(attack.growth ?? 0)}%
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -51,10 +51,6 @@ const AttackIntelligence: React.FC<AttackIntelligenceProps> = ({ data }) => {
       </div>
     </div>
   );
-};
-
-export default AttackIntelligence;
-;
 };
 
 export default AttackIntelligence;

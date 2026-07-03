@@ -1,0 +1,33 @@
+networks:
+  cinematic-net:
+    driver: bridge
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cinematic-backend
+    ports:
+      - "8001:8000"
+    environment:
+      - MAPBOX_ACCESS_TOKEN=${MAPBOX_ACCESS_TOKEN}
+    networks:
+      - cinematic-net
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_MAPBOX_TOKEN=${MAPBOX_ACCESS_TOKEN}
+        - NEXT_PUBLIC_API_URL=http://localhost:8001/api
+    container_name: cinematic-frontend
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend
+    networks:
+      - cinematic-net
+    restart: always

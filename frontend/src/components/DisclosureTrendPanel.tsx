@@ -42,7 +42,10 @@ const DisclosureTrendPanel: React.FC<DisclosureTrendPanelProps> = ({ trends }) =
               <XAxis dataKey="name" stroke="#94A3B8" />
               <YAxis stroke="#94A3B8" />
               <Tooltip 
-                formatter={(value: number, name: string) => [`${value.toFixed(1)}%`, name]}
+                formatter={(value, name) => [
+                  `${(Number(value) || 0).toFixed(2)}`,
+                  String(name ?? '')
+                ]}
                 contentStyle={{ backgroundColor: '#1A202C', border: '1px solid #4A5568', borderRadius: '4px' }}
                 itemStyle={{ color: '#E2E8F0' }}
               />

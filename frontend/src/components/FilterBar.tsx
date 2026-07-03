@@ -90,7 +90,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ sectors, attackTypes, onFilterCha
             value={attackType}
             onChange={(e) => setAttackType(e.target.value)}
           >
-            {attackTypeOptions.map(a => <option key={a} value={a}>{a}</option>)}
+            {allAttackTypesOptions.map(a => <option key={a} value={a}>{a}</option>)}
           </select>
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-secondary pointer-events-none" />
         </div>

@@ -43,8 +43,10 @@ def test_analytics_sectors():
 def test_analytics_severity():
     response = client.get("/api/analytics/severity")
     assert response.status_code == 200
-    assert isinstance(response.json(), dict)
-    assert "Low" in response.json()
+    payload = response.json()
+    assert isinstance(payload, dict)
+    assert "distribution" in payload
+    assert "Low" in payload["distribution"]
 
 def test_analytics_timeline():
     response = client.get("/api/analytics/timeline")

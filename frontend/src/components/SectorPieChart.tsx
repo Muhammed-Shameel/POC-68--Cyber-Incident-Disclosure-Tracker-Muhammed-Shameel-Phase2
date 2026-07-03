@@ -37,7 +37,7 @@ export function SectorPieChart({ data }: SectorPieChartProps) {
         label: {
           show: false
         },
-        data: safeData.map(d => ({ name: d.sector, value: d.incident_count })),
+        data: safeData.map(d => ({ name: d.sector, value: d.count })),
         emphasis: {
           itemStyle: {
             shadowBlur: 10,
