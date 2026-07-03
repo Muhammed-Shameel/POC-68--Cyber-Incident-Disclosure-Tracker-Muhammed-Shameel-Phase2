@@ -24,7 +24,6 @@ backend/data/raw/*.json
 backend/data/processed/*.parquet
 
 # Keep important processed files
-!backend/data/processed/incidents_clean.csv
 !backend/data/processed/incidents_clean.json
 
 # ==========================================
