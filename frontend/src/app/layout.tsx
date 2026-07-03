@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "CyberTracker - Incident Disclosure Dashboard",
   description: "Executive dashboard for tracking cyber incident disclosures",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
