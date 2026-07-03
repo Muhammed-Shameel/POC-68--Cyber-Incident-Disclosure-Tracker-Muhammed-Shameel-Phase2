@@ -29,7 +29,7 @@ interface ExecutiveSidebarProps {
   };
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://poc-68-cyber-incident-disclosure-tracker.onrender.com/api';
 
 function formatGrowth(value: number | null | undefined) {
   if (value === null || value === undefined) {

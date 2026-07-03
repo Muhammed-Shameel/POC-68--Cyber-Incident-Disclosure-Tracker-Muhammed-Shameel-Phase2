@@ -11,7 +11,7 @@ import {
   HighRiskIncident
 } from '../types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://poc-68-cyber-incident-disclosure-tracker.onrender.com/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
