@@ -1,0 +1,24 @@
+======================================================================
+UAT TEST REPORT — Cyber Incident Disclosure Tracker
+======================================================================
+Target URL : https://poc-68-cyber-incident-disclosure-tracker-muhammed-cf6ualwfg.vercel.app/dashboard
+Run Time   : 2026-07-07 14:09:43
+----------------------------------------------------------------------
+[Test Case: Visual Load]
+       Status : PASS
+       Detail : Header/Main structure visible
+       Time   : 2.48s
+----------------------------------------------------------------------
+[Test Case: The Handshake]
+       Status : PASS
+       Detail : Intelligence Panel slid into view
+       Time   : 0.22s
+----------------------------------------------------------------------
+[Test Case: The Signature]
+       Status : PASS
+       Detail : Info popover opened and name verified
+       Time   : 0.17s
+----------------------------------------------------------------------
+SUMMARY: 3 passed, 0 failed, 3 total
+Total Time : 6.83s
+======================================================================

@@ -11,7 +11,9 @@ import {
   HighRiskIncident
 } from '../types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://poc-68-cyber-incident-disclosure-tracker.onrender.com/api';
+// In development (local/Docker), this should point to the backend container service name (e.g., 'http://backend:8000/api')
+// In production (Vercel), this should be the Render backend URL (e.g., 'https://api.your-app.com/api')
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,

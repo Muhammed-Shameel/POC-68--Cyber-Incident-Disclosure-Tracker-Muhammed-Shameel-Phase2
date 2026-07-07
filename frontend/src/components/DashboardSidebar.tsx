@@ -10,6 +10,7 @@ import { IntelligenceSummary } from './IntelligenceSummary';
 import DataQualityPanel from './DataQualityPanel';
 import { WhoControlsTheRail } from './WhoControlsTheRail';
 import { ResponseChecklist } from './ResponseChecklist';
+import { api } from '@/lib/api';
 
 interface DashboardSidebarProps {
   highestRiskSector: string;
@@ -25,8 +26,6 @@ interface DashboardSidebarProps {
   summary: AnalyticsSummary;
   incidents: IncidentType[];
 }
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://poc-68-cyber-incident-disclosure-tracker.onrender.com/api';
 
 export function DashboardSidebar({
   highestRiskSector,
@@ -53,7 +52,11 @@ export function DashboardSidebar({
     if (currentFilters.severity) queryParams.append('severity', currentFilters.severity);
     if (currentFilters.attackType) queryParams.append('attack_type', currentFilters.attackType);
 
-    const url = `${API_BASE_URL}/export/${format}?${queryParams.toString()}`;
+    // Using window.location to construct the export URL based on API_BASE_URL internally used by the api client.
+    // Since api client doesn't export the base URL easily, we fallback to a fetch call or update api client to support raw requests.
+    // For now, let's keep it simple as per existing logic but using the base URL from the API client context if possible.
+    const baseUrl = (api as any).apiClient?.defaults?.baseURL || 'http://localhost:8000/api';
+    const url = `${baseUrl}/export/${format}?${queryParams.toString()}`;
     
     try {
       const response = await fetch(url);

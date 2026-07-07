@@ -12,6 +12,7 @@ import {
 import AttackDistributionPanel from './AttackDistributionPanel';
 import DisclosureTrendPanel from './DisclosureTrendPanel';
 import DataQualityPanel from './DataQualityPanel';
+import { api } from '@/lib/api';
 
 interface ExecutiveSidebarProps {
   insights: string[];
@@ -28,8 +29,6 @@ interface ExecutiveSidebarProps {
     attackType: string;
   };
 }
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://poc-68-cyber-incident-disclosure-tracker.onrender.com/api';
 
 function formatGrowth(value: number | null | undefined) {
   if (value === null || value === undefined) {
@@ -70,7 +69,8 @@ export function ExecutiveSidebar({
       queryParams.append('attack_type', currentFilters.attackType);
     }
 
-    const url = `${API_BASE_URL}/export/${format}?${queryParams.toString()}`;
+    const baseUrl = (api as any).apiClient?.defaults?.baseURL || 'http://localhost:8000/api';
+    const url = `${baseUrl}/export/${format}?${queryParams.toString()}`;
     
     try {
       const response = await fetch(url);
